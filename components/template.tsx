@@ -21,7 +21,12 @@ export function Template({ children }: React.PropsWithChildren) {
       </main>
 
       <footer className="bg-black text-white py-4 w-full text-center">
-        <p className="text-sm">Made with ❤️ for fun</p>
+        <p className="flex gap-4 flex-col justify-center items-center text-sm text-gray-300">
+          <p className="text-sm">Made with ❤️ for fun</p>
+          <a href="https://buymeacoffee.com/air8x">
+            <img src="/coffee.png" alt="Buy Me Coffee" className="h-12" />
+          </a>
+        </p>
       </footer>
     </div>
   );
