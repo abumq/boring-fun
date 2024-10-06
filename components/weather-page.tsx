@@ -78,7 +78,7 @@ export function WeatherPage() {
   return (
     <div className="p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-center">Weather</h1>
+        <h2 className="text-3xl font-bold mb-8 text-center">Weather</h2>
         <div className="flex mb-4">
           <Input
             type="text"

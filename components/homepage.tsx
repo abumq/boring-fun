@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Calculator, Cloud } from 'lucide-react'; // Import icons
+import { Calculator, Clock, Cloud } from 'lucide-react'; // Import icons
 
 const toolsData = [
   {
@@ -10,6 +10,12 @@ const toolsData = [
     description: "A fully functional iOS-like calculator built for the web.",
     link: "/calculator",
     icon: Calculator,
+  },
+  {
+    title: "Clock",
+    description: "World clock application",
+    link: "/clock",
+    icon: Clock,
   },
   {
     title: "Weather",
