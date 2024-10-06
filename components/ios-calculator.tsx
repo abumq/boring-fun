@@ -6,8 +6,8 @@ import { Battery, Wifi, SignalHigh } from "lucide-react"
 
 export function IosCalculator() {
   const [display, setDisplay] = useState('0')
-  const [operation, setOperation] = useState(null)
-  const [prevValue, setPrevValue] = useState(null)
+  const [operation, setOperation] = useState<null | string>(null)
+  const [prevValue, setPrevValue] = useState<null | number>(null)
   const [shouldResetDisplay, setShouldResetDisplay] = useState(false)
 
   const handleNumberClick = (num: string) => {
@@ -19,7 +19,7 @@ export function IosCalculator() {
     }
   }
 
-  const handleOperationClick = (op) => {
+  const handleOperationClick = (op: null | string) => {
     if (operation && !shouldResetDisplay) {
       handleEquals()
     }
@@ -29,7 +29,7 @@ export function IosCalculator() {
   }
 
   const handleEquals = () => {
-    if (!operation || shouldResetDisplay) return
+    if (!operation || shouldResetDisplay || prevValue === null) return
 
     const current = parseFloat(display)
     let result = 0
