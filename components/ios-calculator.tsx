@@ -68,7 +68,7 @@ export function IosCalculator() {
   const functionButtonClass = `${buttonClass} bg-[#a5a5a5] text-black`
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 scale-90">
+    <div className="flex flex-col items-center justify-center scale-75">
       <div className="bg-black border-[14px] border-black rounded-[50px] overflow-hidden shadow-2xl w-[375px]">
         <div className="relative bg-black text-white h-[812px] w-[347px] rounded-[36px] overflow-hidden font-sans">
           {/* Top Notch */}
@@ -87,7 +87,7 @@ export function IosCalculator() {
           {/* Calculator Body */}
           <div className="p-4 pt-12">
             <div className="mb-6 p-4">
-              <div className="text-right text-[80px] font-light text-white overflow-x-auto whitespace-nowrap">
+              <div className="text-right text-[80px] font-light text-white overflow-x-auto whitespace-nowrap select-none">
                 {display}
               </div>
             </div>
