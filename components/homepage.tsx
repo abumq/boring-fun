@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Calculator, Clock, Cloud, Watch } from 'lucide-react'; // Import icons
+import { Calculator, Clock, Cloud, Watch, ToyBrick } from 'lucide-react';
 
 const toolsData = [
   {
@@ -28,6 +28,12 @@ const toolsData = [
     description: "A luxury watch that is extremely useless.",
     link: "/watch",
     icon: Watch,
+  },
+  {
+    title: "Stopwatch",
+    description: "An analog stopwatch with laps and tachometer.",
+    link: "/stopwatch",
+    icon: ToyBrick,
   },
 ];
 
