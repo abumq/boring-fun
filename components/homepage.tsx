@@ -13,7 +13,7 @@ const toolsData = [
   },
   {
     title: "Clock",
-    description: "World clock application",
+    description: "A simple and intuitive world clock application.",
     link: "/clock",
     icon: Clock,
   },
@@ -35,13 +35,13 @@ export function Homepage() {
 
   return (
     <>
-      <div className="w-full max-w-md mx-auto px-4">
+      <div className="w-full max-w-md mx-auto px-4 mt-4">
         <div className="relative">
           <input
             type="text"
             placeholder="Search for tools..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(evt) => setSearchTerm(evt.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md pr-10"
           />
         </div>

@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Sun, Cloud, CloudRain, CloudSnow, Wind } from "lucide-react"
+import { ArrowUp, ArrowUpRight, ArrowRight, ArrowDownRight, ArrowDown, ArrowDownLeft, ArrowLeft, ArrowUpLeft } from 'lucide-react';
 
 interface WeatherData {
   city: string
@@ -17,14 +18,14 @@ interface WeatherData {
 export function WeatherPage() {
 
   const directionArrows = new Map([
-    ['N', '↑'],    // North
-    ['NE', '↗'],   // North-East
-    ['E', '→'],    // East
-    ['SE', '↘'],   // South-East
-    ['S', '↓'],    // South
-    ['SW', '↙'],   // South-West
-    ['W', '←'],    // West
-    ['NW', '↖']    // North-West
+    ['N', ArrowUp],        // North
+    ['NE', ArrowUpRight],   // North-East
+    ['E', ArrowRight],      // East
+    ['SE', ArrowDownRight], // South-East
+    ['S', ArrowDown],       // South
+    ['SW', ArrowDownLeft],  // South-West
+    ['W', ArrowLeft],       // West
+    ['NW', ArrowUpLeft]     // North-West
   ]);
 
   const [cities, setCities] = useState<string[]>([])
@@ -62,6 +63,11 @@ export function WeatherPage() {
     }
   }
 
+  const getWindIcon = (windDirection: string) => {
+    const Icon = directionArrows.get(windDirection)!
+    return <Icon />
+  }
+
   const handleAddCity = () => {
     if (newCity && cities.length < 2) {
       setCities([...cities, newCity])
@@ -94,27 +100,27 @@ export function WeatherPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {weatherData.map((data) => (
-            <Card key={data.city} className="overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                <CardTitle>{data.city}</CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="text-4xl font-bold">{data.temp}°C</div>
-                  {getWeatherIcon(data.condition)}
-                </div>
-                <div className="mt-4">
-                  <p className="text-lg">{data.condition}</p>
-                  <div className="flex items-center mt-2">
-                    <Wind className="h-5 w-5 mr-2" />
-                    <span>
-                      {data.windSpeed} m/s {directionArrows.get(data.windDirection) ?? 'U'}
-                    </span>
+              <Card key={data.city} className="overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                  <CardTitle>{data.city}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex justify-between">
+                    <div className="text-4xl font-bold">{data.temp}°C</div>
+                    {getWeatherIcon(data.condition)}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <div className="mt-4">
+                    <p className="text-lg">{data.condition}</p>
+                    <div className="flex items-center mt-2">
+                      <Wind className="h-5 w-5 mr-2" />
+                      <span className="flex gap-3">
+                        {data.windSpeed} m/s {getWindIcon(data.windDirection)}
+                      </span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
         </div>
       </div>
     </div>

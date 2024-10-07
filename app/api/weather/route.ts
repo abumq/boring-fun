@@ -1,16 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const getWindDirection = (degree: number) => {
-  const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
-  return directions[Math.round(degree / 45) % 8]
-}
+const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+
+const getWindDirection = (degree: number) => directions[Math.round(degree / 45) % 8]
 
 export async function GET(req: NextRequest) {
   // Extract cities from the query parameters
   const { searchParams } = new URL(req.url);
   const cities = searchParams.getAll('cities[]');
   
-  // Use your environment variable for the API key
   const API_KEY = process.env.WEATHER_API_KEY;
 
   // Fetch data for all cities
@@ -33,6 +31,9 @@ export async function GET(req: NextRequest) {
     })
   );
 
-  // Return the fetched weather data
-  return NextResponse.json(data);
+  // Set cache control headers for 20 minutes (1200 seconds)
+  const response = NextResponse.json(data);
+  response.headers.set('Cache-Control', 's-maxage=1200, stale-while-revalidate=600');
+  
+  return response;
 }
