@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { svgBrandName } from '@/lib/brand-name'
+import { useState, useEffect } from 'react'
 
-export const LuxuryWatch: React.FC = () => {
+export const LuxuryWatch = () => {
   const [time, setTime] = useState(new Date())
 
   useEffect(() => {
@@ -119,11 +120,7 @@ export const LuxuryWatch: React.FC = () => {
         
         {/* Center cap */}
         <circle cx="200" cy="200" r="6" fill="#fff" />
-        
-        {/* Brand name */}
-        <image href="/useless-tools.png" x="180" y="70" width="30" height="30" />
-        <text x="200" y="120" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold" fontFamily="cursive">Useless</text>
-        <text x="200" y="140" textAnchor="middle" fill="#ffff00" fontSize="12" fontFamily="monospace">Tools</text>
+        {svgBrandName(200)}
       </svg>
     </div>
   )

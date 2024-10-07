@@ -8,6 +8,11 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+const OrbitronMedium = localFont({
+  src: "./fonts/orbitron-medium-webfont.woff",
+  variable: "--font-orbitron",
+  weight: "100",
+});
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -27,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${OrbitronMedium.variable} antialiased`}
       >
         <Template>
           {children}

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { svgBrandName } from '@/lib/brand-name'
 
 const CLOCK_RADIUS = 180
 const HAND_WIDTHS = { hour: 4, minute: 3, second: 2 }
@@ -66,7 +67,7 @@ export function AnalogStopwatch() {
           y1={CLOCK_RADIUS + (CLOCK_RADIUS - tickLength) * Math.sin((angle * Math.PI) / 180)}
           x2={CLOCK_RADIUS + CLOCK_RADIUS * Math.cos((angle * Math.PI) / 180)}
           y2={CLOCK_RADIUS + CLOCK_RADIUS * Math.sin((angle * Math.PI) / 180)}
-          stroke={isMajorTick ? "#FFFF00" : "#888888"}
+          stroke={isMajorTick ? "#FFFF00" : "#ffff99"}
           strokeWidth={isMajorTick ? 2 : 1}
         />
       )
@@ -126,20 +127,17 @@ export function AnalogStopwatch() {
 
   return (
     <div className="flex flex-col items-center space-y-4 rounded-lg">
-      <svg width={CLOCK_RADIUS * 2 + 40} height={CLOCK_RADIUS * 2 + 40} className="text-yellow-400">
-        <circle cx={CLOCK_RADIUS} cy={CLOCK_RADIUS} r={CLOCK_RADIUS} fill="black" stroke="#333333" strokeWidth="4" />
+      <svg width={CLOCK_RADIUS * 2} height={CLOCK_RADIUS * 2}>
+        <circle cx={CLOCK_RADIUS} cy={CLOCK_RADIUS} r={CLOCK_RADIUS - 4} fill="black" stroke="#333333" strokeWidth="4" />
         {renderClockFace()}
         {renderTachometer()}
-        {/* Brand name */}
-        <image href="/useless-tools.png" x="165" y="70" width="30" height="30" />
-        <text x="185" y="120" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold" fontFamily="cursive">Useless</text>
-        <text x="185" y="140" textAnchor="middle" fill="#ffff00" fontSize="12" fontFamily="monospace">Tools</text>
+        {svgBrandName()}
         {renderHand("hour")}
         {renderHand("minute")}
         {renderHand("second")}
         <circle cx={CLOCK_RADIUS} cy={CLOCK_RADIUS} r={4} fill="#FFFF00" />
       </svg>
-      <div className="text-2xl font-bold text-black">{formatTime(time)}</div>
+      <div className="text-2xl font-bold text-black font-digit w-[136px] text-justify">{formatTime(time)}</div>
       <div className="flex space-x-2">
         <Button onClick={handleStartStop} className="bg-yellow-400 text-black hover:bg-yellow-500">
           {isRunning ? "Stop" : "Start"}
