@@ -8,11 +8,11 @@ export function Template({ children }: React.PropsWithChildren) {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
       <header className="flex bg-white shadow w-full items-center justify-between">
-        <Link href="/" className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center">
-          <Image width={100} height={100} src="/useless-tools.png" alt="Useless Tools" className="mr-4" />
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 text-center">Useless Tools</h1>
-            <p className="text-lg text-gray-600 text-center">Most useless tools on the planet</p>
+        <Link href="/" className="mx-auto py-6 px-4 sm:px-6 lg:px-8 flex gap-4 items-center">
+          <Image width={50} height={50} src="/useless-tools.png" alt="Useless Tools" className="sm:w-1/2 md:w-1/3 lg:w-1/4" />
+          <div className="flex flex-col w-full">
+            <h1 className="font-bold text-gray-900 text-center text-3xl lg:text-4xl">Useless Tools</h1>
+            <p className="text-xl text-gray-600 text-center lg:whitespace-nowrap">Most useless tools on the planet</p>
           </div>
         </Link>
         <a
