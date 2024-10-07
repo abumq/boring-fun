@@ -1,7 +1,7 @@
 'use client'
 
-import { svgBrandName } from '@/lib/brand-name'
 import { useState, useEffect } from 'react'
+import { svgBrandName } from '@/lib/brand-name'
 
 export const LuxuryWatch = () => {
   const [time, setTime] = useState(new Date())
@@ -44,10 +44,6 @@ export const LuxuryWatch = () => {
           const y2 = 200 + 184 * Math.sin(angle)
           return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#fff" strokeWidth="2" />
         })}
-        <text fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">
-          <textPath xlinkHref="#tachymeter" startOffset="5%">500 450 400 350 300 250 200 180 160 140 120 110 100 90 80 70 60</textPath>
-        </text>
-        <circle id="tachymeter" cx="200" cy="200" r="175" fill="none" />
         
         {/* Hour markers */}
         {[...Array(12)].map((_, i) => {

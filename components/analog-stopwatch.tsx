@@ -8,9 +8,7 @@ import { svgBrandName } from '@/lib/brand-name'
 const CLOCK_RADIUS = 180
 const HAND_WIDTHS = { hour: 4, minute: 3, second: 2 }
 const HAND_LENGTHS = { hour: 60, minute: 90, second: 120 }
-const TACHOMETER_MARKS = [
-  500, 400, 350, 300, 250, 200, 180, 160, 140, 130, 120, 110, 100, 90, 80, 70, 60, 55, 50, 45, 40, 35, 30,
-]
+const TACHOMETER_MARKS = Array.from({ length: 12 }, (_, i) => i * 5) // 0, 5, 10, ..., 55
 
 export function AnalogStopwatch() {
   const [time, setTime] = useState(0)
@@ -105,7 +103,7 @@ export function AnalogStopwatch() {
 
   const renderTachometer = () => {
     return TACHOMETER_MARKS.map((speed, index) => {
-      const angle = (index / TACHOMETER_MARKS.length) * 360
+      const angle = (30 * 9) + (index / TACHOMETER_MARKS.length) * 360
       const x = CLOCK_RADIUS + (CLOCK_RADIUS - 30) * Math.cos((angle * Math.PI) / 180)
       const y = CLOCK_RADIUS + (CLOCK_RADIUS - 30) * Math.sin((angle * Math.PI) / 180)
       return (
