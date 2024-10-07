@@ -34,7 +34,7 @@ export function Template({ children }: React.PropsWithChildren) {
         <p className="flex gap-4 flex-col justify-center items-center text-sm text-gray-300">
           <p className="text-sm">Made with ❤️ for 🎉</p>
           <a href="https://buymeacoffee.com/useless_tools" target="_blank" rel="noopener noreferrer">
-            <Image width={100} height={40} src="/coffee.png" alt="Buy Me Coffee" />
+            <Image width={160} height={48} src="/coffee.png" alt="Buy Me Coffee" />
           </a>
         </p>
       </footer>
